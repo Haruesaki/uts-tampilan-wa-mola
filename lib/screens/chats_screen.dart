@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../data/dummy_data.dart';
 import '../widgets/chat_tile.dart';
+import '../screens/settings_screen.dart';
 
 class ChatsScreen extends StatelessWidget {
   const ChatsScreen({super.key});
@@ -73,11 +74,14 @@ class ChatsScreen extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      onSelected: (value) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Belum tersedia')),
-                        );
-                      },
+                     onSelected: (String value) {
+                     if (value == 'settings') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                      );
+                      }
+                        },
                       itemBuilder: (_) => const [
                         PopupMenuItem(value: 'new_group', height: 140, child: Text('New group', style: TextStyle(color: _mainText, fontSize: 48))),
                         PopupMenuItem(value: 'new_community', height: 140, child: Text('New community', style: TextStyle(color: _mainText, fontSize: 48))),

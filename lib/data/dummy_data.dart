@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/chat_item.dart';
+import '../models/setting_item.dart';
 
 const chats = [
   ChatItem(
@@ -43,4 +44,33 @@ const calls = [
     avatarBg: Color(0xFF3E3320),
     avatarIcon: Color(0xFFFFCA28),
   ),
+];
+
+final List<SettingItem> settingsList = [
+  SettingItem(icon: Icons.star_outline, title: "Langganan", subtitle: "Jelajahi keuntungan premium"),
+  SettingItem(icon: Icons.devices, title: "Perangkat tertaut", subtitle: "Gunakan WhatsApp di perangkat lain"),
+  SettingItem(icon: Icons.vpn_key_outlined, title: "Akun", subtitle: "Notifikasi keamanan, ganti nomor"),
+  SettingItem(icon: Icons.lock_outline, title: "Privasi", subtitle: "Akun diblokir, pesan sementara"),
+  SettingItem(icon: Icons.contact_page_outlined, title: "Daftar", subtitle: "Kelola orang dan grup"),
+  SettingItem(icon: Icons.chat_outlined, title: "Chat", subtitle: "Riwayat obrolan, cadangan"),
+  SettingItem(icon: Icons.palette_outlined, title: "Tampilan", subtitle: "Tema obrolan, ikon aplikasi, tema aplikasi"),
+  SettingItem(icon: Icons.campaign_outlined, title: "Siaran", subtitle: "Kelola daftar dan kirim siaran"),
+  SettingItem(icon: Icons.calendar_today, title: "Acara Baru", subtitle: "Lihat dan kelola acara", isNew: true),
+  SettingItem(icon: Icons.notifications_none, title: "Notifikasi", subtitle: "Pesan, grup & nada dering panggilan"),
+  SettingItem(icon: Icons.data_usage, title: "Penyimpanan dan data", subtitle: "Penggunaan jaringan, unduh otomatis"),
+  SettingItem(icon: Icons.child_care, title: "Kontrol orang tua", subtitle: "Pengaturan untuk keluarga Anda"),
+  SettingItem(icon: Icons.accessibility_new, title: "Aksesibilitas", subtitle: "Tingkatkan kontras, animasi"),
+  SettingItem(icon: Icons.language, title: "Bahasa Aplikasi", subtitle: "Bahasa Indonesia (bahasa perangkat)"),
+  SettingItem(icon: Icons.help_outline, title: "Bantuan dan masukan", subtitle: "Pusat Bantuan, hubungi kami, Kebijakan Privasi"),
+  SettingItem(icon: Icons.group_add_outlined, title: "Undang teman"),
+  SettingItem(icon: Icons.system_update_alt, title: "Pembaruan aplikasi"),
+  SettingItem(icon: Icons.all_inclusive, title: "Pusat Akun", subtitle: "Kendalikan pengalaman Anda di WhatsApp, Facebook, Instagram, dan lainnya."),
+];
+
+final List<MetaAppItem> metaAppsList = [
+  MetaAppItem(icon: Icons.camera_alt, label: "Instagram"),
+  MetaAppItem(icon: Icons.facebook, label: "Facebook"),
+  MetaAppItem(icon: Icons.alternate_email, label: "Threads"),
+  MetaAppItem(icon: Icons.group_work, label: "Aplikasi Meta AI"),
+  MetaAppItem(icon: Icons.play_circle_outline, label: "Aplikasi Vibes"),
 ];
