@@ -44,6 +44,7 @@ class SettingsScreen extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 52),
 
           // 2. App Bar Header
           Padding(

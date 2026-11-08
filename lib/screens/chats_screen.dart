@@ -45,6 +45,7 @@ class ChatsScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 52),
               // App bar header
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 8),

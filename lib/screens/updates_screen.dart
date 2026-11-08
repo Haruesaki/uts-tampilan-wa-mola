@@ -37,6 +37,7 @@ class UpdatesScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 52),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 8),
                 child: Row(
