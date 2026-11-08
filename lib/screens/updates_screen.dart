@@ -14,7 +14,7 @@ class UpdatesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(56, 32, 56, 12),
+                padding: const EdgeInsets.fromLTRB(56, 68, 56, 16),
                 child: Row(
                   children: [
                     const Text(

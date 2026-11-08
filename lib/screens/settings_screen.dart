@@ -16,115 +16,167 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
-      appBar: AppBar(
-        backgroundColor: bgColor,
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        toolbarHeight: 140,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: textColor, size: 75),
-          onPressed: () => Navigator.pop(context),
-        ),
-        actions: [
-          IconButton(icon: Icon(Icons.search, color: textColor, size: 75), onPressed: () {}),
-          const SizedBox(width: 16),
-          IconButton(icon: Icon(Icons.qr_code_scanner, color: textColor, size: 75), onPressed: () {}),
-          const SizedBox(width: 16),
-          IconButton(icon: Icon(Icons.edit_outlined, color: textColor, size: 75), onPressed: () {}),
-          const SizedBox(width: 32),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 30),
-            
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ProfileScreen()),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20), 
-                child: Center(
-                  child: Column(
-                    children: [
-                      Stack(
-                        clipBehavior: Clip.none,
-                        alignment: Alignment.topCenter,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(top: 40, bottom: 40),
-                            child: const CircleAvatar(
-                              radius: 160,
-                              backgroundColor: Color(0xFF1F2C34),
-                              backgroundImage: NetworkImage('https://wallpaperset.com/w/full/3/d/b/198619.jpg'), 
-                              child: Icon(Icons.person, size: 160, color: Color(0xFF8696A0)),
-                            ),
-                          ),
-                          Positioned(
-                            top: -10,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 18),
-                              decoration: BoxDecoration(
-                                color: metaBgColor,
-                                borderRadius: BorderRadius.circular(40),
-                              ),
-                              child: Text(
-                                "Ada kabar apa?", 
-                                style: TextStyle(color: subTextColor, fontSize: 38),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Fauzan Adzim", 
-                            style: TextStyle(color: textColor, fontSize: 56, fontWeight: FontWeight.w400),
-                          ),
-                          const SizedBox(width: 16),
-                          Icon(Icons.keyboard_arrow_down, color: textColor, size: 60),
-                        ],
-                      ),
-                    ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // 1. Mock status bar (Identik dengan seluruh layar)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(56, 68, 56, 16),
+            child: Row(
+              children: [
+                Text(
+                  '10:15',
+                  style: TextStyle(
+                    color: textColor,
+                    fontSize: 44,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-              ),
+                const Spacer(),
+                Icon(Icons.signal_cellular_alt, color: textColor, size: 44),
+                const SizedBox(width: 14),
+                Icon(Icons.wifi, color: textColor, size: 44),
+                const SizedBox(width: 14),
+                Transform.rotate(
+                  angle: 1.57,
+                  child: Icon(Icons.battery_full, color: textColor, size: 48),
+                ),
+              ],
             ),
-            
-            const SizedBox(height: 48),
-            for (final item in settingsList) _buildSettingItem(item),
-            
-            const SizedBox(height: 48),
+          ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 24),
+          // 2. App Bar Header
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 8),
+            child: Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back, color: textColor, size: 75),
+                  onPressed: () => Navigator.pop(context),
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                ),
+                const Spacer(),
+                IconButton(
+                  icon: Icon(Icons.search, color: textColor, size: 75), 
+                  onPressed: () {},
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                ),
+                const SizedBox(width: 32),
+                IconButton(
+                  icon: Icon(Icons.qr_code_scanner, color: textColor, size: 75), 
+                  onPressed: () {},
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                ),
+                const SizedBox(width: 32),
+                IconButton(
+                  icon: Icon(Icons.edit_outlined, color: textColor, size: 75), 
+                  onPressed: () {},
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                ),
+              ],
+            ),
+          ),
+
+          // 3. Scrollable Content
+          Expanded(
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Juga dari Meta", style: TextStyle(color: subTextColor, fontSize: 48, fontWeight: FontWeight.w500)),
-                  const SizedBox(height: 40),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
+                  const SizedBox(height: 30),
+                  
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20), 
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Stack(
+                              clipBehavior: Clip.none,
+                              alignment: Alignment.topCenter,
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(top: 40, bottom: 40),
+                                  child: const CircleAvatar(
+                                    radius: 160,
+                                    backgroundColor: Color(0xFF1F2C34),
+                                    backgroundImage: NetworkImage('https://wallpaperset.com/w/full/3/d/b/198619.jpg'), 
+                                    child: Icon(Icons.person, size: 160, color: Color(0xFF8696A0)),
+                                  ),
+                                ),
+                                Positioned(
+                                  top: -10,
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 18),
+                                    decoration: BoxDecoration(
+                                      color: metaBgColor,
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: Text(
+                                      "Ada kabar apa?", 
+                                      style: TextStyle(color: subTextColor, fontSize: 38),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Fauzan Adzim", 
+                                  style: TextStyle(color: textColor, fontSize: 56, fontWeight: FontWeight.w400),
+                                ),
+                                const SizedBox(width: 16),
+                                Icon(Icons.keyboard_arrow_down, color: textColor, size: 60),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  
+                  const SizedBox(height: 48),
+                  for (final item in settingsList) _buildSettingItem(item),
+                  
+                  const SizedBox(height: 48),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 24),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (final app in metaAppsList) _buildMetaAppIcon(app),
+                        Text("Juga dari Meta", style: TextStyle(color: subTextColor, fontSize: 48, fontWeight: FontWeight.w500)),
+                        const SizedBox(height: 40),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              for (final app in metaAppsList) _buildMetaAppIcon(app),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
+                  const SizedBox(height: 120), 
                 ],
               ),
             ),
-            const SizedBox(height: 120), 
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
