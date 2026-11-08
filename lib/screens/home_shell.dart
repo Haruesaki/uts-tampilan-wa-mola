@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'chats_screen.dart';
 import 'calls_screen.dart';
-import 'placeholder_screen.dart';
+import 'updates_screen.dart';
+import 'community_screen.dart';
 
 class HomeShell extends StatefulWidget {
   const HomeShell({super.key});
@@ -22,8 +23,8 @@ class _HomeShellState extends State<HomeShell> {
 
   final _screens = const [
     ChatsScreen(),
-    PlaceholderScreen(title: 'Updates'),
-    PlaceholderScreen(title: 'Communities'),
+    UpdatesScreen(),
+    CommunityScreen(),
     CallsScreen(),
   ];
 

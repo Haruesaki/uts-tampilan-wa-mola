@@ -24,12 +24,17 @@ void main() {
       // Navigate to Updates
       await tester.tap(find.text('Updates'));
       await tester.pumpAndSettle();
-      expect(find.text('Updates'), findsNWidgets(2));
+      expect(find.text('Pembaruan'), findsOneWidget);
+      expect(find.text('Status'), findsOneWidget);
+      expect(find.text('Tambah Status'), findsOneWidget);
+      expect(find.text('Saluran'), findsOneWidget);
+      expect(find.text('Jelajahi'), findsOneWidget);
 
       // Navigate to Communities
       await tester.tap(find.text('Communities'));
       await tester.pumpAndSettle();
-      expect(find.text('Communities'), findsNWidgets(2));
+      expect(find.text('Komunitas'), findsOneWidget);
+      expect(find.text('Komunitas baru'), findsOneWidget);
 
       // Navigate to Calls
       await tester.tap(find.text('Calls'));
