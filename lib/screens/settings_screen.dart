@@ -4,7 +4,7 @@ import '../models/setting_item.dart';
 import 'profile_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   final Color bgColor = const Color(0xFF0B141A);
   final Color textColor = Colors.white;
@@ -19,34 +19,36 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: bgColor,
         elevation: 0,
-        toolbarHeight: 80,
+        scrolledUnderElevation: 0,
+        toolbarHeight: 140,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: textColor, size: 32),
+          icon: Icon(Icons.arrow_back, color: textColor, size: 75),
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
-          IconButton(icon: Icon(Icons.search, color: textColor, size: 32), onPressed: () {}),
-          IconButton(icon: Icon(Icons.qr_code_scanner, color: textColor, size: 32), onPressed: () {}),
-          IconButton(icon: Icon(Icons.edit_outlined, color: textColor, size: 32), onPressed: () {}),
-          const SizedBox(width: 10),
+          IconButton(icon: Icon(Icons.search, color: textColor, size: 75), onPressed: () {}),
+          const SizedBox(width: 16),
+          IconButton(icon: Icon(Icons.qr_code_scanner, color: textColor, size: 75), onPressed: () {}),
+          const SizedBox(width: 16),
+          IconButton(icon: Icon(Icons.edit_outlined, color: textColor, size: 75), onPressed: () {}),
+          const SizedBox(width: 32),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             
             InkWell(
               onTap: () {
-                // Navigasi ke halaman Profil
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const ProfileScreen()),
                 );
               },
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10), 
+                padding: const EdgeInsets.symmetric(vertical: 20), 
                 child: Center(
                   child: Column(
                     children: [
@@ -55,23 +57,25 @@ class SettingsScreen extends StatelessWidget {
                         alignment: Alignment.topCenter,
                         children: [
                           Container(
-                            margin: const EdgeInsets.only(top: 25, bottom: 25),
+                            margin: const EdgeInsets.only(top: 40, bottom: 40),
                             child: const CircleAvatar(
-                              radius: 85,
+                              radius: 160,
+                              backgroundColor: Color(0xFF1F2C34),
                               backgroundImage: NetworkImage('https://wallpaperset.com/w/full/3/d/b/198619.jpg'), 
+                              child: Icon(Icons.person, size: 160, color: Color(0xFF8696A0)),
                             ),
                           ),
                           Positioned(
-                            top: -5,
+                            top: -10,
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 18),
                               decoration: BoxDecoration(
                                 color: metaBgColor,
-                                borderRadius: BorderRadius.circular(25),
+                                borderRadius: BorderRadius.circular(40),
                               ),
                               child: Text(
                                 "Ada kabar apa?", 
-                                style: TextStyle(color: subTextColor, fontSize: 18)
+                                style: TextStyle(color: subTextColor, fontSize: 38),
                               ),
                             ),
                           ),
@@ -82,10 +86,10 @@ class SettingsScreen extends StatelessWidget {
                         children: [
                           Text(
                             "Fauzan Adzim", 
-                            style: TextStyle(color: textColor, fontSize: 32, fontWeight: FontWeight.w400)
+                            style: TextStyle(color: textColor, fontSize: 56, fontWeight: FontWeight.w400),
                           ),
-                          const SizedBox(width: 8),
-                          Icon(Icons.keyboard_arrow_down, color: textColor, size: 36),
+                          const SizedBox(width: 16),
+                          Icon(Icons.keyboard_arrow_down, color: textColor, size: 60),
                         ],
                       ),
                     ],
@@ -94,29 +98,31 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             
-            const SizedBox(height: 40),
-            ...settingsList.map((item) => _buildSettingItem(item)).toList(),
+            const SizedBox(height: 48),
+            for (final item in settingsList) _buildSettingItem(item),
             
-            const SizedBox(height: 30),
+            const SizedBox(height: 48),
 
             Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Juga dari Meta", style: TextStyle(color: subTextColor, fontSize: 18, fontWeight: FontWeight.w500)),
-                  const SizedBox(height: 30),
+                  Text("Juga dari Meta", style: TextStyle(color: subTextColor, fontSize: 48, fontWeight: FontWeight.w500)),
+                  const SizedBox(height: 40),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: metaAppsList.map((app) => _buildMetaAppIcon(app)).toList(),
+                      children: [
+                        for (final app in metaAppsList) _buildMetaAppIcon(app),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 80), 
+            const SizedBox(height: 120), 
           ],
         ),
       ),
@@ -127,18 +133,17 @@ class SettingsScreen extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Padding(
-        // Padding atas-bawah dilebarkan menjadi 26 (sebelumnya 20)
-        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 26), 
+        padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 36), 
         child: Row(
           crossAxisAlignment: item.subtitle != null 
               ? CrossAxisAlignment.start 
               : CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: item.subtitle != null ? 2.0 : 0.0),
-              child: Icon(item.icon, color: iconColor, size: 42), 
+              padding: EdgeInsets.only(top: item.subtitle != null ? 4.0 : 0.0),
+              child: Icon(item.icon, color: iconColor, size: 72), 
             ),
-            const SizedBox(width: 36), 
+            const SizedBox(width: 48), 
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,28 +154,27 @@ class SettingsScreen extends StatelessWidget {
                         flex: 0,
                         child: Text(
                           item.title, 
-                          style: TextStyle(color: textColor, fontSize: 26, fontWeight: FontWeight.w400) 
+                          style: TextStyle(color: textColor, fontSize: 52, fontWeight: FontWeight.w400),
                         ),
                       ),
                       if (item.isNew) ...[
-                        const SizedBox(width: 14),
+                        const SizedBox(width: 20),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                           decoration: BoxDecoration(
                             color: const Color(0xFF00A884),
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          child: const Text("Baru", style: TextStyle(color: Color(0xFF0B141A), fontSize: 16, fontWeight: FontWeight.bold)),
+                          child: const Text("Baru", style: TextStyle(color: Color(0xFF0B141A), fontSize: 28, fontWeight: FontWeight.bold)),
                         ),
                       ]
                     ],
                   ),
                   if (item.subtitle != null) ...[
-                    const SizedBox(height: 10), 
+                    const SizedBox(height: 12), 
                     Text(
                       item.subtitle!, 
-                      // Ukuran Font Subtitle diperbesar menjadi 19 (sebelumnya 17)
-                      style: TextStyle(color: subTextColor, fontSize: 19, height: 1.3) 
+                      style: TextStyle(color: subTextColor, fontSize: 40, height: 1.3),
                     ),
                   ]
                 ],
@@ -184,21 +188,21 @@ class SettingsScreen extends StatelessWidget {
 
   Widget _buildMetaAppIcon(MetaAppItem app) {
     return Padding(
-      padding: const EdgeInsets.only(right: 32.0),
+      padding: const EdgeInsets.only(right: 48.0),
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(22), 
+            padding: const EdgeInsets.all(36), 
             decoration: BoxDecoration(
               color: metaBgColor,
               shape: BoxShape.circle,
             ),
-            child: Icon(app.icon, color: textColor, size: 42), 
+            child: Icon(app.icon, color: textColor, size: 72), 
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 24),
           Text(
             app.label, 
-            style: TextStyle(color: subTextColor, fontSize: 16, fontWeight: FontWeight.w500) 
+            style: TextStyle(color: subTextColor, fontSize: 36, fontWeight: FontWeight.w500),
           ),
         ],
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   final Color bgColor = const Color(0xFF0B141A);
   final Color textColor = Colors.white;
@@ -16,34 +16,37 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: bgColor,
         elevation: 0,
-        toolbarHeight: 80,
+        scrolledUnderElevation: 0,
+        toolbarHeight: 140,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: textColor, size: 32),
+          icon: Icon(Icons.arrow_back, color: textColor, size: 75),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           "Profil",
-          style: TextStyle(color: textColor, fontSize: 26, fontWeight: FontWeight.w400),
+          style: TextStyle(color: textColor, fontSize: 68, fontWeight: FontWeight.normal),
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 30),
+            const SizedBox(height: 50),
             
             Center(
               child: Stack(
                 children: [
                   const CircleAvatar(
-                    radius: 95, 
+                    radius: 180, 
+                    backgroundColor: Color(0xFF1F2C34),
                     backgroundImage: NetworkImage('https://wallpaperset.com/w/full/3/d/b/198619.jpg'), 
+                    child: Icon(Icons.person, size: 180, color: Color(0xFF8696A0)),
                   ),
                   Positioned(
-                    bottom: 0,
-                    right: 4,
+                    bottom: 4,
+                    right: 8,
                     child: Container(
-                      padding: const EdgeInsets.all(14), 
+                      padding: const EdgeInsets.all(28), 
                       decoration: BoxDecoration(
                         color: whatsappGreen,
                         shape: BoxShape.circle,
@@ -51,14 +54,14 @@ class ProfileScreen extends StatelessWidget {
                       child: const Icon(
                         Icons.camera_alt,
                         color: Color(0xFF0B141A), 
-                        size: 32,
+                        size: 64,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 80),
 
             _buildProfileItem(
               icon: Icons.person_outline,
@@ -89,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
               isSubtitleGreen: true,
             ),
             
-            const SizedBox(height: 40),
+            const SizedBox(height: 60),
           ],
         ),
       ),
@@ -105,12 +108,12 @@ class ProfileScreen extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 22), 
+        padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 32), 
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, color: iconColor, size: 32), 
-            const SizedBox(width: 30), 
+            Icon(icon, color: iconColor, size: 72), 
+            const SizedBox(width: 48), 
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,15 +122,15 @@ class ProfileScreen extends StatelessWidget {
                     title,
                     style: TextStyle(
                       color: subTextColor, 
-                      fontSize: 18,
+                      fontSize: 40,
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 12),
                   Text(
                     subtitle,
                     style: TextStyle(
                       color: isSubtitleGreen ? whatsappGreen : textColor, 
-                      fontSize: 22, 
+                      fontSize: 52, 
                       fontWeight: FontWeight.w400,
                     ),
                   ),
